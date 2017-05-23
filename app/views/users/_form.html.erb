@@ -1,0 +1,26 @@
+<%= form_for @user, :html => {:class => 'form-signin'}  do |f| %>
+  <h2>Sign up</h2>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger">
+      <strong><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</strong>
+
+      <% user.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
+    <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name', required: true %>
+
+    <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name', required: true %>
+
+    <%= f.text_field :email, class: 'form-control', placeholder: 'Email', required: true %>
+
+    <%= f.password_field :password, class: 'form-control', placeholder: 'Password', required: true %>
+
+    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password', required: true %>
+
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Signup</button>
+  <%= link_to 'Login', login_path %>
+<% end %>
